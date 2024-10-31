@@ -1,23 +1,42 @@
-name: Lint Check
+name: PR Action Workflow
 
 on:
-  push:
-    branches: [ main ]
   pull_request:
+    branches: [main, dev]
 
 jobs:
-  lint:
-
+  lint_test_build:
     runs-on: ubuntu-latest
+    environment: development
+
+    strategy:
+      matrix:
+        node-version: ['20.17.0']
 
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          node-version-file: '.nvmrc'
-          cache: pnpm
+          node-version: ${{ matrix.node-version }}
 
-      - run: pnpm install --frozen-lockfile --prefer-offline
+      - name: Setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
-      - run: pnpm lint
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Lint
+        run: pnpm run lint
+
+      - name: Run TypeScript type checking
+        run: pnpm run check-types
+
+      - name: Run Prettier Format Check
+        run: pnpm run format:check
+
+
