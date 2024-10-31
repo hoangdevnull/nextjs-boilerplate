@@ -2,6 +2,11 @@
   "name": "next-15-boilerplate",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "email": "pqhoang.dev@gmail.com",
+    "name": "HoangDevNull",
+    "url": "https://github.com/hoangdevnull"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
