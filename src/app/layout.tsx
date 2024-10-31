@@ -1,8 +1,8 @@
+import { fontMono, fontSans } from '@/config/fonts';
+import { siteConfig } from '@/config/site';
+import { cn } from '@/lib/utils';
 import type { Metadata, Viewport } from 'next';
 import './globals.css';
-import { fontMono, fontSans } from '@/config/fonts';
-import { cn } from '@/lib/utils';
-import { siteConfig } from '@/config/site';
 import Providers from './providers';
 
 export const metadata: Metadata = {
@@ -60,7 +60,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         suppressHydrationWarning
         className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable, fontMono.variable)}
       >
-        <Providers themeProps={{ attribute: 'class', forcedTheme: 'light' }}>{children}</Providers>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

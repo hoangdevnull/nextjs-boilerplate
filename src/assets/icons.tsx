@@ -1,13 +1,19 @@
 import type { ForwardRefExoticComponent, RefAttributes, SVGProps } from 'react';
 
-import Github from './svg/github.svg';
-import Google from './svg/google.svg';
-import Microsoft from './svg/microsoft.svg';
+import file from './svg/file.svg';
+import github from './svg/github.svg';
+import globe from './svg/globe.svg';
+import google from './svg/google.svg';
+import microsoft from './svg/microsoft.svg';
+import window from './svg/window.svg';
 
 const IconList = {
-  Google,
-  Microsoft,
-  Github,
+  google,
+  microsoft,
+  github,
+  globe,
+  file,
+  window,
 };
 
 type SVGAttributes = Partial<SVGProps<SVGSVGElement>>;
