@@ -19,7 +19,7 @@ export interface ProvidersProps {
   children: ReactNode;
 }
 
-export function Providers({ children }: ProvidersProps) {
+function Providers({ children }: ProvidersProps) {
   const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
